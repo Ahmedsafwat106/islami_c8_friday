@@ -66,32 +66,49 @@ class _SebhaTabState extends State<SebhaTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("عدد التسبيحات: $counter",
-            style: Theme.of(context).textTheme.headlineSmall),
-        const SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: _increment,
-          child: const Text("سبّح"),
+    return Center(
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // 🟢 صورة السبحه
+            Image.asset(
+              "assets/images/Sebha.png",
+              height: 150,
+            ),
+            const SizedBox(height: 20),
+
+            // 🟢 عداد التسبيحات
+            Text(
+              "عدد التسبيحات: $counter",
+              style: Theme.of(context).textTheme.headlineSmall,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 20),
+
+            // 🟢 الأزرار
+            ElevatedButton(
+              onPressed: _increment,
+              child: const Text("سبّح"),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: _reset,
+              child: const Text("إعادة التصفير"),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: _scheduleNotification,
+              child: const Text("🔔 تفعيل إشعار يومي"),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: _cancelNotifications,
+              child: const Text("❌ إلغاء الإشعارات"),
+            ),
+          ],
         ),
-        const SizedBox(height: 10),
-        ElevatedButton(
-          onPressed: _reset,
-          child: const Text("إعادة التصفير"),
-        ),
-        const SizedBox(height: 10),
-        ElevatedButton(
-          onPressed: _scheduleNotification,
-          child: const Text("🔔 تفعيل إشعار يومي"),
-        ),
-        const SizedBox(height: 10),
-        ElevatedButton(
-          onPressed: _cancelNotifications,
-          child: const Text("❌ إلغاء الإشعارات"),
-        ),
-      ],
+      ),
     );
   }
 }

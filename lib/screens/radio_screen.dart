@@ -22,7 +22,7 @@ class _RadioScreenState extends State<RadioScreen> {
   Future<void> _initRadio() async {
     final session = await AudioSession.instance;
     await session.configure(const AudioSessionConfiguration.music());
-    // محطة قرآن مباشر (تقدر تغير اللينك)
+    // 🟢 محطة قرآن مباشر (تقدر تغير اللينك لو حابب)
     await player.setUrl("https://qurango.net/radio/tarateel");
   }
 
@@ -53,20 +53,30 @@ class _RadioScreenState extends State<RadioScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.radio, size: 120, color: Colors.teal),
-            const SizedBox(height: 20),
+            // 🟢 صورة الراديو
+            Image.asset(
+              "assets/images/radio.png",
+              height: 150,
+            ),
+            const SizedBox(height: 30),
+
             const Text(
               "Quran Radio Live",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 40),
+
             ElevatedButton.icon(
               onPressed: _togglePlay,
               icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow),
               label: Text(isPlaying ? "إيقاف" : "استمع الآن"),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.teal,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
+                  vertical: 14,
+                ),
+                textStyle: const TextStyle(fontSize: 18),
               ),
             ),
           ],

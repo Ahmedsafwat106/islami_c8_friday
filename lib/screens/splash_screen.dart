@@ -51,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen>
         child: Center(
           child: FadeTransition(
             opacity: _animation,
-            child: Image.asset("assets/images/logo.jpg", width: 150),
+            child: Image.asset("assets/images/hadeth_bg.png", width: 150),
           ),
         ),
       ),

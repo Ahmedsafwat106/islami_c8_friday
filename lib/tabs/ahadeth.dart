@@ -31,12 +31,12 @@ class _AhadethTabState extends State<AhadethTab> {
     super.dispose();
   }
 
-
   List<HadethModel> _filter(List<HadethModel> all) {
     if (_query.trim().isEmpty) return all;
     final q = _query.trim().toLowerCase();
     return all.where((h) {
-      return h.title.toLowerCase().contains(q) || h.content.toLowerCase().contains(q);
+      return h.title.toLowerCase().contains(q) ||
+          h.content.toLowerCase().contains(q);
     }).toList();
   }
 
@@ -57,35 +57,56 @@ class _AhadethTabState extends State<AhadethTab> {
 
           body = Column(
             children: [
-
-              Image.asset("assets/images/ahadeth.png", fit: BoxFit.cover, height: 150, width: double.infinity),
+              // 🟢 صورة الأحاديث
+              Image.asset(
+                "assets/images/ahadeth.png",
+                height: 180,
+                fit: BoxFit.contain,
+              ),
 
               const SizedBox(height: 10),
-              Divider(thickness: 2, color: Theme.of(context).colorScheme.onBackground),
+              Divider(
+                  thickness: 2,
+                  color: Theme.of(context).colorScheme.onBackground),
               Text(
                 AppLocalizations.of(context)!.ahadeth,
-                style: GoogleFonts.elMessiri(fontSize: 25, fontWeight: FontWeight.w500),
+                style: GoogleFonts.elMessiri(
+                    fontSize: 26, fontWeight: FontWeight.w600),
               ),
-              Divider(thickness: 2, color: Theme.of(context).colorScheme.onBackground),
+              Divider(
+                  thickness: 2,
+                  color: Theme.of(context).colorScheme.onBackground),
 
-
+              // 🟢 مربع البحث
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                 child: TextField(
                   controller: _searchController,
-                  onChanged: (v) => setState(() { _query = v; }),
+                  onChanged: (v) => setState(() {
+                    _query = v;
+                  }),
                   decoration: InputDecoration(
-                    hintText: lang == 'ar' ? 'ابحث عن حديث...' : 'Search hadith...',
+                    hintText: lang == 'ar'
+                        ? 'ابحث عن حديث...'
+                        : 'Search hadith...',
                     prefixIcon: const Icon(Icons.search),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
                   ),
                 ),
               ),
 
-
+              // 🟢 قائمة الأحاديث
               Expanded(
                 child: filtered.isEmpty
-                    ? Center(child: Text(lang == 'ar' ? "لا توجد نتائج" : "No results found"))
+                    ? Center(
+                  child: Text(
+                    lang == 'ar' ? "لا توجد نتائج" : "No results found",
+                    style: const TextStyle(fontSize: 18),
+                  ),
+                )
                     : ListView.separated(
                   separatorBuilder: (context, index) => Divider(
                     thickness: 1,
@@ -105,7 +126,8 @@ class _AhadethTabState extends State<AhadethTab> {
                         );
                       },
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        padding:
+                        const EdgeInsets.symmetric(vertical: 10),
                         child: Text(
                           hadeth.title,
                           style: GoogleFonts.quicksand(fontSize: 20),

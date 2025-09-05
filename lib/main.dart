@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:islami_c8_friday/screens/bookmarks_screen.dart';
+import 'package:islami_c8_friday/widgets/azkar_content.dart';
 
 import 'home_screen.dart';
 import 'my_theme.dart';
@@ -18,6 +19,9 @@ import 'package:islami_c8_friday/hadeth_content.dart';
 import 'package:islami_c8_friday/sura_content.dart';
 import 'l10n/app_localizations.dart';
 import 'services/notification_service.dart';
+
+// ✅ استيراد صفحة محتوى الأذكار الجديدة
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -69,6 +73,9 @@ class MyApplication extends StatelessWidget {
             AzkarScreen.routeName: (context) => AzkarScreen(),
             RadioScreen.routeName: (context) => RadioScreen(),
             BookmarksScreen.routeName: (context) => const BookmarksScreen(),
+
+            // ✅ صفحة الأذكار الجديدة
+            AzkarContent.routeName: (context) => AzkarContent(),
           },
         );
       },

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../sura_content.dart';
 import '../sura_model.dart';
 
@@ -140,6 +139,15 @@ class _QuranTabState extends State<QuranTab> {
 
     return Column(
       children: [
+        const SizedBox(height: 20),
+        // 🟢 صورة المصحف
+        Image.asset(
+          "assets/images/quran_bg.png",
+          height: 120,
+        ),
+        const SizedBox(height: 20),
+
+        // 🟢 مربع البحث
         Padding(
           padding: const EdgeInsets.all(12.0),
           child: TextField(
@@ -153,6 +161,8 @@ class _QuranTabState extends State<QuranTab> {
             onChanged: (val) => setState(() => query = val),
           ),
         ),
+
+        // 🟢 قائمة السور
         Expanded(
           child: ListView.separated(
             itemBuilder: (context, index) {
